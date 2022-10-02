@@ -3,6 +3,8 @@ class Course < ApplicationRecord
     validates :description, presence: true
 
     scope :recent, -> { order(created_at: :desc) }
+    scope :by_title, -> (title) { where('title ILIKE ?', "%#{title}%") }
 
     has_rich_text :description
+    belongs_to :user
 end

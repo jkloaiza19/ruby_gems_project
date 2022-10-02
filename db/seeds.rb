@@ -6,9 +6,12 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-10.times do
+user = User.create!(email: 'jkloaiza19+ruby@gmail.com', password: 'wipip123', password_confirmation: 'wipip123')
+
+8.times do
     Course.create!([{
         title: Faker::Educator.course_name,
-        description: Faker::Marketing.buzzwords
+        description: Faker::Marketing.buzzwords,
+        user: user
     }])
 end

@@ -1,10 +1,7 @@
-<p style="color: green"><%= notice %></p>
-
 <%= render @course %>
 
-<div>
-  <%= link_to "Edit this course", edit_course_path(@course) %> |
-  <%= link_to "Back to courses", courses_path %>
-
-  <%= button_to "Destroy this course", @course, method: :delete %>
+<div class="btn-group" role="group">
+  <%= link_to "Edit this course", edit_course_path(@course), class: "btn btn-link" %>
+  <%= link_to "Back to courses", courses_path, class: "btn btn-link" %>
+  <%= button_to "Delete this course", @course, method: :delete, class: "btn btn-link" %>
 </div>
