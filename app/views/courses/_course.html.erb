@@ -1,0 +1,7 @@
+    <tr  id="<%= dom_id course %>" >
+      <td scope="col"><%= course.title %></td>
+      <td scope="col"><%= course.description %></td>
+      <td scope="col"><%= link_to 'Edit this course <i class="bi bi-pencil"></i>'.html_safe, edit_course_path(course.id), class: "btn btn-outline-primary" %></td>
+      <td scope="col"><%= link_to 'Show this course <i class="bi bi-arrow-right-circle-fill"></i>'.html_safe, course, class: "btn btn btn-outline-primary" %></td>
+    </tr>
+ 
