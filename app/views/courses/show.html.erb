@@ -1,7 +1,3 @@
-<%= render @course %>
-
-<div class="btn-group" role="group">
-  <%= link_to "Edit this course", edit_course_path(@course), class: "btn btn-link" %>
-  <%= link_to "Back to courses", courses_path, class: "btn btn-link" %>
-  <%= button_to "Delete this course", @course, method: :delete, class: "btn btn-link" %>
+<div class="h-100 p-5 bg-dark rounded-3 mt-5">
+  <%= render @course %>
 </div>

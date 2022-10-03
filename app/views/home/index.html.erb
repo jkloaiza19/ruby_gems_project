@@ -1,0 +1,41 @@
+<div class="h-100 p-5 bg-dark rounded-3 mt-5">
+ <h2 class="display-4 text-light">What do you want to learn?</h2>
+
+ <div class="card-group mt-5">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title display-6"><i class="bi bi-pc-display-horizontal"></i></h5>
+      <p class="card-text"><p class="card-text"><%= @courses.count %>&nbsp;online courses</p></p>
+      <p class="card-text"><small class="text-muted">Explore a variety of fresh topics</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title display-6"><i class="bi bi-person-video3"></i></h5>
+      <p class="card-text"><%= @courses.distinct.count(:user_id) %>&nbsp;expert instructors</p>
+      <p class="card-text"><small class="text-muted">Find the right instructor for you</small></p>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-body">
+      <h5 class="card-title display-6"><i class="bi bi-people-fill"></i></h5>
+      <p class="card-text"><p class="card-text"><%= @users.count %>&nbsp;active learners</p></p>
+      <p class="card-text"><small class="text-muted">Join the knowledge sharing community</small></p>
+    </div>
+    </div>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title display-6"><i class="bi bi-infinity"></i></h5>
+      <p class="card-text">Lifetime access</p>
+      <p class="card-text"><small class="text-muted">Learn on your schedule</small></p>
+    </div>
+  </div>
+</div>
+
+ <h4 class="p-4 text-light">Recent courses:</h4>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <% @latest_courses.each do |course| %>
+      <%= render course %>
+    <% end %>
+  </div>
+</div>

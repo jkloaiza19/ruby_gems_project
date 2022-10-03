@@ -5,20 +5,21 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <a class="navbar-brand" href="/home">RubyGemsProject</a>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <% if current_user %>
-          <li class="nav-item">
-            <%= link_to '<i class="bi bi-house-door-fill"></i> Home'.html_safe, root_path, class: "nav-link #{'active font-weight-bold' if current_page?(root_path)}" %>
-          </li>
+        <% if signed_in? %>
+        <li class="nav-item">
+          <%= link_to '<i class="bi bi-house-door-fill"></i> Home'.html_safe, home_path, class: "nav-link #{'active font-weight-bold' if current_page?(home_path)}" %>
+        </li>
           <li class="nav-item">
             <%= link_to '<i class="bi bi-file-richtext-fill"></i> Courses'.html_safe, courses_path, class: "nav-link #{'active font-weight-bold' if current_page?(courses_path)}" %>
           </li>
           <% else %>
             <li class="nav-item">
-              <%= link_to "Log in", user_session_path, class: 'btn btn-outline-primary' %>
+              <%= link_to "Log in", user_session_path, class: "nav-link #{'active font-weight-bold' if current_page?(user_session_path)}"%>
             </li>
             <li class="nav-item">
-              <%= link_to "Sign up", new_user_registration_path, class: 'btn btn-outline-primary' %>
+              <%= link_to "Sign up", new_user_registration_path, class: "nav-link #{'active font-weight-bold' if current_page?(new_user_registration_path)}" %>
             </li>
         <% end %>
       </ul>
