@@ -14,6 +14,9 @@
           <li class="nav-item">
             <%= link_to '<i class="bi bi-file-richtext-fill"></i> Courses'.html_safe, courses_path, class: "nav-link #{'active font-weight-bold' if current_page?(courses_path)}" %>
           </li>
+          <li class="nav-item">
+            <%= link_to '<i class="bi bi-people-fill"></i> Users'.html_safe, users_path, class: "nav-link #{'active font-weight-bold' if current_page?(users_path)}" %>
+          </li>
           <% else %>
             <li class="nav-item">
               <%= link_to "Log in", user_session_path, class: "nav-link #{'active font-weight-bold' if current_page?(user_session_path)}"%>
@@ -39,10 +42,10 @@
             </a>
             <ul class="dropdown-menu">
               <li class="dropdown-item">
-                <%= link_to '<i class="bi bi-pencil-square"></i> Edit user'.html_safe, edit_user_registration_path, class: 'btn btn-primary btn-sm' %>
+                <%= link_to '<i class="bi bi-pencil-square"></i> Edit user'.html_safe, edit_user_registration_path, class: 'nav-link text-dark' %>
               </li>
               <li class="dropdown-item">
-                <%= button_to '<i class="bi bi-power"></i> Log out'.html_safe, destroy_user_session_path, method: :delete, class: 'btn btn-danger btn-sm' %>
+                <%= button_to '<i class="bi bi-power"></i> Log out'.html_safe, destroy_user_session_path, method: :delete, class: 'nav-link text-dark no-border no-bg ' %>
               </li>
             </ul>
           </li>

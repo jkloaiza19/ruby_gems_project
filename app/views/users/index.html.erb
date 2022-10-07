@@ -1,0 +1,8 @@
+<div class="h-100 p-5 bg-dark rounded-3 mb-5 mt-5">
+  <h2 class="display-6 text-light mb-4">Users (<%= @users.count %>)</h2>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <% @users.each do |user| %>
+      <%= render user %>
+    <% end %>
+  </div>
+</div> 

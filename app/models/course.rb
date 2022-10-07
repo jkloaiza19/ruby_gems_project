@@ -1,4 +1,7 @@
 class Course < ApplicationRecord
+    extend FriendlyId
+    friendly_id :title, use: :slugged
+
     validates :title, presence: true, length: { minimum: 8, maximum: 250 }
     validates :description, presence: true
 

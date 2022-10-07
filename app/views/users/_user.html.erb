@@ -1,0 +1,23 @@
+<div class="col">
+  <div class="card border-dark mb-3 text-dark shadow-lg">
+    <h5 class="card-header text-center"><i class="bi bi-person-fill"></i><%= link_to "#{user.email}", user_path(user), class: "btn btn-link" %></h5>
+    <div class="card-body">
+      <p class="card-text"></p>
+    </div>
+        <div class="card-footer order-primary">
+        <div class="col"><i class="bi bi-dot"></i> <strong>signup:</strong> <%= user.created_at.strftime('%m/%d/%Y') %></div>
+        <div class="col"><i class="bi bi-dot"></i> <strong><%= "sign_in_count".humanize %>:</strong> <%= user.sign_in_count %></div>
+        <div class="col"><i class="bi bi-dot"></i> <strong><%= "current_sign_in_at".humanize %>:</strong> <%= user.current_sign_in_at.strftime('%m/%d/%Y') if user.current_sign_in_at %></div>
+        <div class="col"><i class="bi bi-dot"></i> <strong><%= "last_sign_in_at".humanize %>:</strong> <%= user.last_sign_in_at.strftime('%m/%d/%Y') if user.last_sign_in_at %></div>
+        <div class="col"><i class="bi bi-dot"></i> <strong><%= "current_sign_in_ip".humanize %>:</strong> <%= user.current_sign_in_ip %></div>
+        <div class="col"><i class="bi bi-dot"></i> <strong><%= "last_sign_in_ip".humanize %>:</strong> <%= user.last_sign_in_ip %></div>
+        <div class="col"><i class="bi bi-dot"></i> <strong><%= "confirmed".humanize %>:</strong>
+            <% if user.confirmed_at? %>
+                <span class="badge text-bg-success">Yes</span>
+            <% else %>
+                <span class="badge text-bg-danger">Pending</span>
+            <% end %>    
+        </div>
+        </div>
+   </div>
+ </div>  

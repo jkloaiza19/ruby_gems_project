@@ -5,9 +5,9 @@ class CoursesController < ApplicationController
   # GET /courses or /courses.json
   def index
     if params[:title]
-      @courses = Course.by_title(params[:title])
+      @courses = Course.friendly.by_title(params[:title])
     else
-      @courses = Course.all
+      @courses = Course.friendly.all
     end
   end
 
@@ -66,7 +66,7 @@ class CoursesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_course
-      @course = Course.find(params[:id])
+      @course = Course.friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
