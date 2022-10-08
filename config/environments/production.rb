@@ -102,8 +102,7 @@ Rails.application.configure do
     authentication: :plain, 
     user_name: 'AKIA45YAL4DU3KJ73O2L', 
     password: 'BLhweaXpDJplarAJmfzIznfaxZy5Myawcp3cl4RZAQqg', 
-    domain: 'heroku.com', 
-    enable_starttls_auto: true 
+    enable_starttls_auto: true
   }
 
   Rails.application.config.middleware.use ExceptionNotification::Rack,
