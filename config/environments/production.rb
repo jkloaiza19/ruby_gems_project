@@ -96,6 +96,16 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
 
+  config.action_mailer.smtp_settings = {
+    address: 'email-smtp.us-east-1.amazonaws.com', 
+    port: '587', 
+    authentication: :plain, 
+    user_name: 'AKIA45YAL4DU3KJ73O2L', 
+    password: 'BLhweaXpDJplarAJmfzIznfaxZy5Myawcp3cl4RZAQqg', 
+    domain: 'heroku.com', 
+    enable_starttls_auto: true 
+  }
+
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
