@@ -106,6 +106,14 @@ Rails.application.configure do
     enable_starttls_auto: true 
   }
 
+  Rails.application.config.middleware.use ExceptionNotification::Rack,
+  email: {
+    deliver_with: :deliver, # Rails >= 4.2.1 do not need this option since it defaults to :deliver_now
+    email_prefix: "[PREFIX] ",
+    sender_address: %("corsego error" <jkloaiza19+amazon@gmail.com>),
+    exception_recipients: %w[jkloaiza19+amazon@gmail.com]
+  }
+
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
