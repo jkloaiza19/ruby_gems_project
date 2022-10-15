@@ -24,3 +24,18 @@ button.no-border.no-bg {
     border: 0 none;
     background: none;
 }
+
+.row-responsive {
+    flex-direction: row;
+}
+
+@media (max-width: 575.98px) {
+    .card-footer {
+        & .row {
+            flex-direction: column;
+        }
+    }
+    .row-responsive {
+        flex-direction: column;
+    }
+}

@@ -12,7 +12,7 @@
           <%= link_to '<i class="bi bi-house-door-fill"></i> Home'.html_safe, root_path, class: "nav-link #{'active font-weight-bold' if current_page?(root_path)}" %>
         </li>
           <li class="nav-item">
-            <%= link_to '<i class="bi bi-file-richtext-fill"></i> Courses'.html_safe, courses_path, class: "nav-link #{'active font-weight-bold' if current_page?(courses_path)}" %>
+            <%= link_to '<i class="bi bi-mortarboard-fill"></i> Courses'.html_safe, courses_path, class: "nav-link #{'active font-weight-bold' if current_page?(courses_path)}" %>
           </li>
           <li class="nav-item">
             <%= link_to '<i class="bi bi-people-fill"></i> Users'.html_safe, users_path, class: "nav-link #{'active font-weight-bold' if current_page?(users_path)}" %>
@@ -32,7 +32,7 @@
          <%= form_tag(courses_path, method: :get) do%>
             <div class="input-group">
               <%= text_field_tag :title, params[:title], autocomplet: 'off', placeholder: 'Search..', class: "form-control" %>
-              <button class="btn btn-primary" type="submit" id="button-addon1"><i class="bi bi-search"></i></button>
+              <button class="btn btn-primary" type="submit" id="button-search"><i class="bi bi-search"></i></button>
             </div>
           <% end %>  
           </li>

@@ -5,9 +5,26 @@
       <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
       <div class="form-inputs">
-        <%= f.input :title %>
-        <%= f.label :description %>
-        <%= f.rich_text_area :description %>
+        <div class="row">
+          <%= f.input :title %>
+        </div>
+        <div class="row mt-3">
+          <%= f.label :description %>
+          <%= f.rich_text_area :description %>
+          <small><%= f.error :description, class: 'text-danger' %></small>
+        </div>
+        <div class="row mt-3">
+          <%= f.input :short_description %>
+        </div>
+        <div class="row mt-3">
+          <%= f.input :language, collection: [ "English", "Spanish", "German", "French", "Italian" ] %>
+        </div>
+        <div class="row mt-3">
+          <%= f.input :level, collection: [ "Beginer", "Intermediate", "Advanced" ] %>
+        </div>
+        <div class="row mt-3">
+          <%= f.input :price %>
+        </div>
       </div>
 
       <div class="form-actions">

@@ -82,3 +82,7 @@ gem 'devise'
 gem 'friendly_id', '~> 5.4.0'
 
 gem 'exception_notification', group: :production # email notifications if any errors in production
+
+gem 'ransack'
+
+gem 'jwt'
