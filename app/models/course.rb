@@ -1,3 +1,4 @@
+# It creates a class called Course that inherits from ApplicationRecord.
 class Course < ApplicationRecord
     extend FriendlyId
     friendly_id :title, use: :slugged
@@ -7,8 +8,18 @@ class Course < ApplicationRecord
     validates :description, presence: true
 
     scope :recent, -> { order(created_at: :desc) }
-    scope :by_title, -> (title) { where('title ILIKE ?', "%#{title}%") }
+    scope :by_title, ->(title) { where('title ILIKE ?', "%#{title}%") }
 
     has_rich_text :description
     belongs_to :user
+
+    LANGUAGES = %i[English Spanish French German Italian]
+    def self.languages
+        LANGUAGES.map { |language| [language, language] }
+    end
+
+    LEVELS = %i[Beginner Intermediate Advanced]
+    def self.levels
+        LEVELS.map { |level| [level, level] }
+    end
 end

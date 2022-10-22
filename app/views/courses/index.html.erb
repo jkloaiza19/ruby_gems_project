@@ -3,9 +3,41 @@
 <%= link_to "New course", new_course_path %><br /><br />
 <div class="h-100 p-5 bg-dark rounded-3 mb-5">
   <h2 class="display-6 text-light mb-4">Courses (<%= @courses.count %>)</h2>
+  <div class="row row-cols-1 row-cols-md-3 g-4 mb-4">
+        <div class="col">
+          <%= search_form_for @ransack_courses, as: :courses_search, url: courses_path do |f| %>
+            <div class="input-group text-light">
+              <%= f.search_field :title_cont, placeholder: 'By title', class: "form-control" %>
+              <%= f.search_field :user_email_cont, placeholder: 'By email', class: "form-control" %>
+              <button class="btn btn-primary" type="submit" id="button-search"><i class="bi bi-search"></i></button>
+              <%= link_to '<i class="bi bi-arrow-repeat"></i>'.html_safe, courses_path, class: "btn btn-outline-secondary" %>
+            </div>
+          <% end %>
+      </div>
+
+    <div class="col">
+     <div class="input-group text-light">
+        <p class="text-light"> Sort by:</p>&nbsp;
+        <%= sort_link(@ransack_courses, :title) %> &nbsp; | &nbsp;
+        <%= sort_link(@ransack_courses, :short_description) %> &nbsp; | &nbsp;
+        <%= sort_link(@ransack_courses, :level) %> &nbsp; | &nbsp;
+     </div>
+    </div>
+
+            <div class="col">
+          <%= search_form_for @ransack_courses do |f| %>
+            <div class="input-group text-light">
+              <p class="text-light"> Filter by:</p>&nbsp;
+              <%= f.select :level_cont, Course.levels, {include_blank: true}, class: "form-control" %>&nbsp;&nbsp;
+              <%= f.select :language_cont, Course.languages, {include_blank: true}, class: "form-control" %>
+            </div>
+        <% end %>
+      </div>
+
+  </div>
   <div class="row row-cols-1 row-cols-md-3 g-4">
     <% @courses.each do |course| %>
       <%= render course %>
     <% end %>
   </div>
-</div>  
+</div>

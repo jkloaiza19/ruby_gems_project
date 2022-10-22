@@ -5,4 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :trackable, :confirmable
          has_many :courses, dependent: :destroy
+
+  def to_s
+    email
+  end
+
+  def username
+    self.email.spli(/@/).first
+  end
 end

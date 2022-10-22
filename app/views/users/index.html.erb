@@ -1,28 +1,26 @@
 <div class="h-100 p-5 bg-dark rounded-3 mb-5 mt-5">
-  <div class="row row-cols-1 row-cols-md-3 g-4">
-    <div class="col">
-        <h2 class="display-6 text-light mb-4">Users (<%= @users.count %>)</h2>
+    <h2 class="display-6 text-light mb-4">Users (<%= @users.count %>)</h2>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4 mb-4">
+        <div class="col">
+            <%= search_form_for @q do |f| %>
+            <div class="input-group text-light">
+                <%= f.search_field :email_cont, placeholder: 'email', class: "form-control" %>
+                <button class="btn btn-primary" type="submit" id="button-search"><i class="bi bi-search"></i></button>
+                <%= link_to '<i class="bi bi-arrow-repeat"></i>'.html_safe, users_path, class: "btn btn-outline-secondary" %>
+            </div>
+            <% end %>
+        </div>
+
+        <div class="col">
+        <div class="input-group text-light">
+            <p class="text-light"> Sort by:</p>&nbsp;
+            <%= sort_link(@q, :email) %> &nbsp; | &nbsp;
+            <%= sort_link(@q, :created_at) %> &nbsp;
+        </div>
+        </div>
     </div>
 
-    <div class="col">
-        <%= search_form_for @q do |f| %>
-          <div class="input-group text-light">
-            <%= f.search_field :email_cont, placeholder: 'email', class: "form-control" %>
-            <button class="btn btn-primary" type="submit" id="button-search"><i class="bi bi-search"></i></button>
-            <%= link_to '<i class="bi bi-arrow-repeat"></i>'.html_safe, users_path, class: "btn btn-outline-secondary" %>
-          </div>
-        <% end %>
-    </div>
-
-    <div class="col">
-     <div class="input-group text-light">
-        <p class="text-light"> Sort by:</p>&nbsp;
-        <%= sort_link(@q, :email) %> &nbsp; | &nbsp;
-        <%= sort_link(@q, :created_at) %> &nbsp;
-     </div>
-    </div>
-
-  </div>
   <div class="row row-cols-1 row-cols-md-3 g-4">
     <% @users.each do |user| %>
       <%= render user %>

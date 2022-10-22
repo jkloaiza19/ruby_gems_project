@@ -17,10 +17,10 @@
           <%= f.input :short_description %>
         </div>
         <div class="row mt-3">
-          <%= f.input :language, collection: [ "English", "Spanish", "German", "French", "Italian" ] %>
+          <%= f.input :language, collection: Course.languages %>
         </div>
         <div class="row mt-3">
-          <%= f.input :level, collection: [ "Beginer", "Intermediate", "Advanced" ] %>
+          <%= f.input :level, collection: Course.levels %>
         </div>
         <div class="row mt-3">
           <%= f.input :price %>

@@ -8,12 +8,25 @@
     <a class="navbar-brand" href="/">RubyGemsProject</a>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <% if signed_in? %>
+
         <li class="nav-item">
           <%= link_to '<i class="bi bi-house-door-fill"></i> Home'.html_safe, root_path, class: "nav-link #{'active font-weight-bold' if current_page?(root_path)}" %>
         </li>
-          <li class="nav-item">
-            <%= link_to '<i class="bi bi-mortarboard-fill"></i> Courses'.html_safe, courses_path, class: "nav-link #{'active font-weight-bold' if current_page?(courses_path)}" %>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle <%= 'active font-weight-bold' if current_page?(courses_path) %>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              &nbsp;<i class="bi bi-mortarboard-fill"></i> &nbsp;Courses
+            </a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <%= link_to '<i class="bi bi-person-video3"></i> Courses'.html_safe, courses_path, class: "nav-link text-dark font-weight-bold #{'active font-weight-bold' if current_page?(courses_path)}" %>
+              </li>
+              <li class="dropdown-item">
+                <%= link_to '<i class="bi bi-plus-square-fill"></i> Course'.html_safe, new_course_path, class: 'nav-link text-dark no-border no-bg font-weight-bold' %>
+              </li>
+            </ul>
           </li>
+
           <li class="nav-item">
             <%= link_to '<i class="bi bi-people-fill"></i> Users'.html_safe, users_path, class: "nav-link #{'active font-weight-bold' if current_page?(users_path)}" %>
           </li>
@@ -29,9 +42,9 @@
         <% if current_user %>
         <ul class="navbar-nav mb-2 mb-lg-0">
          <li class="nav-item">
-         <%= form_tag(courses_path, method: :get) do%>
+         <%= search_form_for @ransack_courses, as: :courses_search, url: courses_path do |f| %>
             <div class="input-group">
-              <%= text_field_tag :title, params[:title], autocomplet: 'off', placeholder: 'Search..', class: "form-control" %>
+              <%= f.search_field :title_cont, autocomplet: 'off', placeholder: 'Search..', class: "form-control" %>
               <button class="btn btn-primary" type="submit" id="button-search"><i class="bi bi-search"></i></button>
             </div>
           <% end %>  

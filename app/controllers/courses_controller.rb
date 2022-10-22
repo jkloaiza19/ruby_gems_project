@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
   before_action :authenticate_user!
+  # before_action :autorized_user?
   before_action :set_course, only: %i[ show edit update destroy ]
 
   # GET /courses or /courses.json
@@ -7,7 +8,11 @@ class CoursesController < ApplicationController
     if params[:title]
       @courses = Course.friendly.by_title(params[:title])
     else
-      @courses = Course.friendly.all
+      # @courses = Course.friendly
+      # @q = Course.friendly.ransack(params[:q])
+      # @courses = @q.result.includes(:user)
+      @ransack_courses = Course.friendly.ransack(params[:courses_search], search_key: :courses_search)
+      @courses = @ransack_courses.result.includes(:user)
     end
   end
 
