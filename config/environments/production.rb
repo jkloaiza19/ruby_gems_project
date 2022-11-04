@@ -109,7 +109,7 @@ Rails.application.configure do
   email: {
     deliver_with: :deliver, # Rails >= 4.2.1 do not need this option since it defaults to :deliver_now
     email_prefix: "[PREFIX] ",
-    sender_address: %("corsego error" <jkloaiza19+amazon@gmail.com>),
+    sender_address: %("Email error" <jkloaiza19+amazon@gmail.com>),
     exception_recipients: %w[jkloaiza19+amazon@gmail.com]
   }
 

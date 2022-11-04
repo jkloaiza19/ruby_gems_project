@@ -88,3 +88,5 @@ gem 'exception_notification', group: :production # email notifications if any er
 gem 'ransack'
 
 gem 'jwt'
+
+gem 'public_activity'

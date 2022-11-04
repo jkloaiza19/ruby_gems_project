@@ -24,16 +24,6 @@
      </div>
     </div>
 
-            <div class="col">
-          <%= search_form_for @ransack_courses do |f| %>
-            <div class="input-group text-light">
-              <p class="text-light"> Filter by:</p>&nbsp;
-              <%= f.select :level_cont, Course.levels, {include_blank: true}, class: "form-control" %>&nbsp;&nbsp;
-              <%= f.select :language_cont, Course.languages, {include_blank: true}, class: "form-control" %>
-            </div>
-        <% end %>
-      </div>
-
   </div>
   <div class="row row-cols-1 row-cols-md-3 g-4">
     <% @courses.each do |course| %>

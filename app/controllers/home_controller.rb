@@ -6,4 +6,8 @@ class HomeController < ApplicationController
         @courses = Course.all
         @users = User.all
     end
+
+    def activity
+        @activities = PublicActivity::Activity.all
+    end
 end

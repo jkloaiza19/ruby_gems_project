@@ -30,6 +30,8 @@
           <li class="nav-item">
             <%= link_to '<i class="bi bi-people-fill"></i> Users'.html_safe, users_path, class: "nav-link #{'active font-weight-bold' if current_page?(users_path)}" %>
           </li>
+
+
           <% else %>
             <li class="nav-item">
               <%= link_to "Log in", user_session_path, class: "nav-link #{'active font-weight-bold' if current_page?(user_session_path)}"%>
@@ -49,6 +51,11 @@
             </div>
           <% end %>  
           </li>
+
+           <li class="nav-item">
+            <%= link_to '<i class="bi bi-bell-fill"></i> Activities'.html_safe, home_activity_path, class: "nav-link #{'active font-weight-bold' if current_page?(home_activity_path)}" %>
+          </li>
+          
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               &nbsp;<i class="bi bi-person-fill"></i>&nbsp;<%= current_user.email %>
