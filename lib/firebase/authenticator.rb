@@ -11,11 +11,10 @@ module Firebase
 
         # This is a class method that is used to sign up a user with Firebase.
         def self.sign_up(email, password)
-            byebug
             response = Net::HTTP.post_form(FIREBASE_URI, "email": email, "password": password)
 
             if response.is_a?(Net::HTTPSuccess)
-                byebug
+                
                 firebase_data = JSON.parse(response.body)
 
                 return firebase_data
@@ -31,7 +30,7 @@ module Firebase
             raise StandardError.new "Invalid token alg header #{alg}" unless alg == JWT_ALGORITHM
 
             public_key = get_public_key(kid)
-            byebug
+            
             decoded_token = decode_token(token, public_key, Rails.application.credentials.firebase_project_id)
 
            is_valid_token?(decoded_token['exp'])
