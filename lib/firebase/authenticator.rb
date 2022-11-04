@@ -28,7 +28,7 @@ module Firebase
             alg = header['alg']
             kid = header['kid']
 
-            raise "Invalid token alg header #{alg}" unless alg == JWT_ALGORITHM
+            raise StandardError.new "Invalid token alg header #{alg}" unless alg == JWT_ALGORITHM
 
             public_key = get_public_key(kid)
             byebug
@@ -53,11 +53,11 @@ module Firebase
         def self.get_public_key(kid)
             response = Net::HTTP.get(FIREBASE_PUBLIC_KEY_URL)
 
-            raise "Failed to fetch JWT public keys from google" unless response.is_a?(String)
+            raise StandardError.new "Failed to fetch JWT public keys from google" unless response.is_a?(String)
 
             public_keys = JSON.parse(response)
 
-            raise "`invalid kid header" unless public_keys.include?(kid)
+            raise StandardError.new "`invalid kid header" unless public_keys.include?(kid)
 
             OpenSSL::X509::Certificate.new(public_keys[kid]).public_key
         end
