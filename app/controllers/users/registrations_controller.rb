@@ -12,7 +12,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super do |resource|
-      byebug
       puts "***************"
       puts resource
       firebase_data = Firebase::Authenticator.sign_up(resource.email, resource.password)
