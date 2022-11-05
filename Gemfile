@@ -92,5 +92,3 @@ gem 'jwt'
 gem 'public_activity'
 
 gem "rolify"
-
-gem "pundit"
