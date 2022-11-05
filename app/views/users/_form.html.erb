@@ -1,0 +1,21 @@
+<div class="card border-dark mb-3 text-dark shadow-lg">
+  <div class="card-body">
+    <%= simple_form_for(@user) do |f| %>
+      <%= f.error_notification %>
+      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+      <div class="form-inputs">
+        <div class="row mt-3">
+          <%= f.input :email %>
+        </div>
+
+        <div class="row mt-3">
+          <%= f.collection_check_boxes :role_ids, Role.all, :id, :name, class: "form-control  form-control-sm"  %>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit , class: 'btn btn-primary mt-5' %>
+      </div>
+     </div>  
+<% end %>

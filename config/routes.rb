@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'home/activity'
   root 'home#index'
-  resources :users, only: %i[index show]
+  delete 'users/:id', to: 'users#destroy'
+  resources :users, only: %i[index show edit destroy update]
 end
