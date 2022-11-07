@@ -1,6 +1,16 @@
 class ApplicationController < ActionController::Base
     include PublicActivity::StoreController
+    include Pundit::Authorization
     before_action :set_global_variables, if: :user_signed_in?
+    after_action :update_user_online, if: :user_signed_in?
+    
+    rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
+    def validate_admin
+      return if current_user.has_role? :admin
+
+      redirect_to root_path
+    end
 
     ##
     # It sets the global variable @ransack_courses to the search results of the Course model.
@@ -22,5 +32,16 @@ class ApplicationController < ActionController::Base
         raise "Unauthorized" unless token
 
         Firebase::Authenticator.verify_token(token)
+    end
+
+    private
+
+    def user_not_authorized
+      flash[:alert] = "You are not authorized to perform this action."
+      redirect_back(fallback_location: root_path)
+    end
+
+    def update_user_online
+      current_user.try :touch
     end
 end

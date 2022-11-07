@@ -3,7 +3,7 @@
 <% if current_user.has_role?(:admin) || current_user.has_role?(:teacher) %>
   <%= link_to "New course", new_course_path %><br /><br />
 <% end %>  
-<div class="h-100 p-5 bg-dark rounded-3 mb-5">
+<div class="h-100 p-5 bg-dark rounded-3 mb-5 mt-5">
   <h2 class="display-6 text-light mb-4">Courses (<%= @courses.count %>)</h2>
   <div class="row row-cols-1 row-cols-md-3 g-4 mb-4">
         <div class="col">

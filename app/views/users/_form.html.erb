@@ -10,7 +10,7 @@
         </div>
 
         <div class="row mt-3">
-          <%= f.collection_check_boxes :role_ids, Role.all, :id, :name, class: "form-control  form-control-sm"  %>
+          <%= f.collection_check_boxes :role_ids, Role.all, :id, :name, item_label_class: "form-check-label"  %>
         </div>
       </div>
 

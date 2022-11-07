@@ -1,6 +1,14 @@
 <div class="col">
   <div class="card border-dark mb-3 text-dark shadow-lg">
-    <h5 class="card-header text-center"><i class="bi bi-person-fill"></i><%= link_to "#{user.email}", user_path(user), class: "btn btn-link" %></h5>
+    <h5 class="card-header text-center">
+      <i class="bi bi-person-fill"></i>
+      <% if user.online? %>
+        <i class="text-success bi bi-circle-fill"></i>
+      <% else %>  
+        <i class="text-secondary bi bi-circle-fill"></i>
+      <% end %>  
+      <%= link_to "#{user.email}", user_path(user), class: "btn btn-link" %>
+    </h5>
     <div class="mt-2">
       <% if user.roles %>
         <% user.roles.each do |role| %>

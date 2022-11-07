@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
     before_action :set_user, only: %i[show edit destroy update]
+    before_action :validate_admin
 
     def index
          # @users = User.all.order(created_at: :desc)
@@ -37,7 +38,7 @@ class UsersController < ApplicationController
     private
 
     def set_user
-        @user = User.find(params[:id])
+        @user = User.friendly.find(params[:id])
     end
 
     def user_params
