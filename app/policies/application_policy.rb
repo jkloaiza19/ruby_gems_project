@@ -1,5 +1,10 @@
 # frozen_string_literal: true
 
+# "The ApplicationPolicy class is a base class for all of your application's policies. It defines the
+# default behavior for all policies."
+#
+# The ApplicationPolicy class defines a set of methods that correspond to the actions that can be
+# taken on a record. For example, the #show? method corresponds to the show action
 class ApplicationPolicy
   attr_reader :user, :record
 

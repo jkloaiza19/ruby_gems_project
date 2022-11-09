@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 # It creates a class called Course that inherits from ApplicationRecord.
 class Course < ApplicationRecord
   include PublicActivity::Model
-  tracked owner: Proc.new{ |controller, model| controller.current_user }
+  tracked owner: proc { |controller, _model| controller.current_user }
   extend FriendlyId
   friendly_id :title, use: :slugged
 
@@ -15,12 +17,12 @@ class Course < ApplicationRecord
   has_rich_text :description
   belongs_to :user
 
-  LANGUAGES = %i[English Spanish French German Italian]
+  LANGUAGES = %i[English Spanish French German Italian].freeze
   def self.languages
     LANGUAGES.map { |language| [language, language] }
   end
 
-  LEVELS = %i[Beginner Intermediate Advanced]
+  LEVELS = %i[Beginner Intermediate Advanced].freeze
   def self.levels
     LEVELS.map { |level| [level, level] }
   end

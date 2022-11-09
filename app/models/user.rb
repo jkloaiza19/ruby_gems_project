@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# It's a User class that has a role, and can have many courses
 class User < ApplicationRecord
   rolify
   after_create :assign_default_role
@@ -16,12 +19,12 @@ class User < ApplicationRecord
   end
 
   def username
-    self.email.spli(/@/).first
+    email.spli(/@/).first
   end
 
   def assign_default_role
-    self.add_role(:student) if self.roles.blank?
-    self.add_role(:teacher)
+    add_role(:student) if roles.blank?
+    add_role(:teacher)
   end
 
   def online?

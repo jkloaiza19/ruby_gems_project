@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # A user can only update, edit, destroy, or create a course if they are an admin or the owner of the
 # course.
 class CoursePolicy < ApplicationPolicy
