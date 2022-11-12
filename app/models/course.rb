@@ -16,6 +16,7 @@ class Course < ApplicationRecord
 
   has_rich_text :description
   belongs_to :user
+  has_many :lessons, dependent: :destroy
 
   LANGUAGES = %i[English Spanish French German Italian].freeze
   def self.languages

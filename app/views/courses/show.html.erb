@@ -1,3 +1,28 @@
 <div class="h-100 p-5 bg-dark rounded-3 mt-5">
-  <%= render @course %>
+  <div class="row">
+     <div class="col <%= 'col-lg-6' if (@course.lessons.count > 0) %>">
+      <%= render @course %>
+    </div>
+    <% if @course.lessons.count > 0 %>
+      <div class="col col-lg-6">
+        <% if owner_or_admin?(@course.user) %>
+         <%= link_to "New lesson", new_lesson_path, class: "btn btn-primary mb-2" %>
+        <% end %> 
+        <ul class="list-group">
+          <li class="list-group-item"><strong>Lessons</strong></li>
+          <% @course.lessons.each do |lesson| %>
+            <li class="list-group-item">
+              <%= link_to "<i class='bi bi-journals'></i> #{lesson.title}".html_safe, lesson, class: "btn btn-link" %>
+              <% if owner_or_admin?(lesson.course.user) %>
+                <div class="btn-group" role="group">
+                  <%= link_to 'Edit <i class="bi bi-pencil-square"></i>'.html_safe, edit_lesson_path(lesson.id), class: "btn btn-link" %>
+                  <%= button_to 'Delete <i class="bi bi-x-lg"></i>'.html_safe, lesson, method: :delete, data: {turbo_confirm: "Are you sure you want to delete"}, class: "btn btn-link text-danger" %>
+                </div>
+              <% end %>  
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>  
+   </div>
 </div>

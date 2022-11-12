@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   include Pundit::Authorization
   before_action :set_global_variables, if: :user_signed_in?
   after_action :update_user_online, if: :user_signed_in?
+  helper_method :owner_or_admin?
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
@@ -15,6 +16,10 @@ class ApplicationController < ActionController::Base
     return if current_user.has_role? :admin
 
     redirect_to root_path
+  end
+
+  def owner_or_admin?(user)
+    current_user && (current_user == user || current_user.has_role?(:admin))
   end
 
   ##

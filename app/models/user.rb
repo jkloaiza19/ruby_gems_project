@@ -9,10 +9,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :trackable, :confirmable
-  has_many :courses, dependent: :destroy
   validate :must_have_a_role, on: :update
   extend FriendlyId
   friendly_id :email, use: :slugged
+  has_many :courses, dependent: :destroy
 
   def to_s
     email

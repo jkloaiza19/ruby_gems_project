@@ -1,37 +1,42 @@
-<div class="col">
-  <div class="card border-dark mb-3 text-dark shadow-lg">
-    <h5 class="card-header text-center"><i class="bi bi-mortarboard-fill"></i><%= link_to course.title , course, class: "btn btn-link" %></h5>
-    <div class="card-body">
-      <% if current_page?(course)%>
-        <p class="card-text"><%= course.description %></p>
-      <% else %>
-        <p class="card-text"><%= course.short_description || 'Short description of the course' %></p>
-      <% end %>
-       </div>
-        <div class="card-footer order-primary">
-          <div class="row row-responsive">
-            <div class="col"><i class="bi bi-chat-text"></i> <%= course.language %></div>
-            <div class="col"><i class="bi bi-graph-up-arrow"></i> <%= course.level %></div>
-            <div class="col"><%= number_to_currency(course.price > 0 ? course.price : 12) %></div>
+
+  <div>
+    <div class="card border-dark mb-3 text-dark shadow-lg">
+      <h5 class="card-header text-center"><i class="bi bi-mortarboard-fill"></i><%= link_to course.title , course, class: "btn btn-link" %></h5>
+      <div class="card-body">
+        <% if current_page?(course)%>
+          <p class="card-text"><%= course.description %></p>
+        <% else %>
+          <p class="card-text"><%= course.short_description || 'Short description of the course' %></p>
+        <% end %>
+        </div>
+          <div class="card-footer order-primary">
+            <div class="row row-responsive">
+              <div class="col"><i class="bi bi-chat-text"></i> <%= course.language %></div>
+              <div class="col"><i class="bi bi-graph-up-arrow"></i> <%= course.level %></div>
+            </div>
           </div>
-        </div>
-        <div class="card-footer order-secondary">
-          <div class="col"><i class="bi bi-clock"></i> <%= course.created_at.strftime('%m/%d/%Y') %></div>
-          <div class="col"><i class="bi bi-person-video3"></i> <%= course.user.email %></div>
-        </div>
-        <div class="card-footer text-center">
-          <div class="btn-group" role="group">
-            <% if !current_page?(course)%>
-              <%= link_to 'View <i class="bi bi-arrow-right"></i>'.html_safe, course, class: "btn btn-primary" %>
-              <% else %>
-              <%= link_to '<i class="bi bi-arrow-left"></i> Back to courses'.html_safe, courses_path, class: "btn btn-outline-primary" %>
-            <% end %>
-            <% if current_user && (current_user == course.user || current_user.has_role?(:admin)) %>
-              <%= link_to 'Edit <i class="bi bi-pencil-square"></i>'.html_safe, edit_course_path(course.id), class: "btn btn-warning" %>
-              <%= button_to 'Delete <i class="bi bi-x-lg"></i>'.html_safe, course, method: :delete, data: {turbo_confirm: "Are you sure you want to delete"}, class: "btn btn-danger" %>
-            <% end %>
+          <div class="card-footer order-primary">
+            <div class="row row-responsive">
+              <div class="col"><i class="bi bi-journals"></i> <%= course.lessons.count %></div>
+              <div class="col"><%= number_to_currency(course.price > 0 ? course.price : 12) %></div>
+            </div>
           </div>
-        </div>
-  </div>
-</div>
- 
+          <div class="card-footer order-secondary">
+            <div class="col"><i class="bi bi-clock"></i> <%= course.created_at.strftime('%m/%d/%Y') %></div>
+            <div class="col"><i class="bi bi-person-video3"></i> <%= course.user.email %></div>
+          </div>
+          <div class="card-footer text-center">
+            <div class="btn-group" role="group">
+              <% if !current_page?(course)%>
+                <%= link_to 'View <i class="bi bi-arrow-right"></i>'.html_safe, course, class: "btn btn-primary" %>
+                <% else %>
+                <%= link_to '<i class="bi bi-arrow-left"></i> Go to courses'.html_safe, courses_path, class: "btn btn-outline-primary" %>
+              <% end %>
+              <% if owner_or_admin?(course.user) %>
+                <%= link_to 'Edit <i class="bi bi-pencil-square"></i>'.html_safe, edit_course_path(course.id), class: "btn btn-warning" %>
+                <%= button_to 'Delete <i class="bi bi-x-lg"></i>'.html_safe, course, method: :delete, data: {turbo_confirm: "Are you sure you want to delete"}, class: "btn btn-danger" %>
+              <% end %>
+            </div>
+          </div>
+    </div>
+ </div>

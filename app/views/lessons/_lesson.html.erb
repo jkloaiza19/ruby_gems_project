@@ -1,0 +1,25 @@
+<div id="<%= dom_id lesson %>" class="card mt-4">
+  <div class="card-header">
+    Lesson
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= lesson.title %></h5>
+    <p class="card-text"> <%= lesson.course.title %></p>
+  </div>
+  <div class="card-footer">
+    Course: <%= link_to lesson.course.title, lesson.course %>
+  </div>
+  <div class="card-footer">
+    <div class="btn-group" role="group">
+      <% if !current_page?(lesson)%>
+        <%= link_to 'View <i class="bi bi-arrow-right"></i>'.html_safe, lesson, class: "btn btn-primary" %>
+        <% else %>
+        <%= link_to '<i class="bi bi-arrow-left"></i> Go to course'.html_safe, course_path(lesson.course), class: "btn btn-outline-primary" %>
+      <% end %>
+      <% if current_user && (current_user == lesson.course.user || current_user.has_role?(:admin)) %>
+        <%= link_to 'Edit <i class="bi bi-pencil-square"></i>'.html_safe, edit_lesson_path(lesson.id), class: "btn btn-warning" %>
+        <%= button_to 'Delete <i class="bi bi-x-lg"></i>'.html_safe, lesson, method: :delete, data: {turbo_confirm: "Are you sure you want to delete"}, class: "btn btn-danger" %>
+      <% end %>
+    </div>
+  </div>
+</div>

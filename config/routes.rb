@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   devise_for :users, controllers: {
     sessions: 'users/sessions',
@@ -12,4 +14,5 @@ Rails.application.routes.draw do
   root 'home#index'
   delete 'users/:id', to: 'users#destroy'
   resources :users, only: %i[index show edit destroy update]
+  resources :lessons
 end
