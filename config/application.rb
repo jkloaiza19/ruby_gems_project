@@ -1,17 +1,19 @@
-require_relative "boot"
+# frozen_string_literal: true
 
-require "rails"
+require_relative 'boot'
+
+require 'rails'
 # Pick the frameworks you want:
-require "active_model/railtie"
-require "active_job/railtie"
-require "active_record/railtie"
-require "active_storage/engine"
-require "action_controller/railtie"
-require "action_mailer/railtie"
-require "action_mailbox/engine"
-require "action_text/engine"
-require "action_view/railtie"
-require "action_cable/engine"
+require 'active_model/railtie'
+require 'active_job/railtie'
+require 'active_record/railtie'
+require 'active_storage/engine'
+require 'action_controller/railtie'
+require 'action_mailer/railtie'
+require 'action_mailbox/engine'
+require 'action_text/engine'
+require 'action_view/railtie'
+require 'action_cable/engine'
 # require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
@@ -19,6 +21,7 @@ require "action_cable/engine"
 Bundler.require(*Rails.groups)
 
 module RubyGemsProject
+  # The `config.eager_load_paths` is a list of directories that Rails will load all the files in
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
@@ -28,9 +31,10 @@ module RubyGemsProject
     # config.autoload_paths << "#{Rails.root}/lib"
     # config.autoload_paths << "#{Rails.root}/lib/firebase"
     # config.paths.add Rails.root.join('lib').to_s, eager_load: true
-    config.eager_load_paths += %W(
-     #{config.root}/lib/
-    )
+    config.eager_load_paths += %W[
+      #{config.root}/lib/
+      #{config.root}/lib/scripting
+    ]
 
     # config.autoload_paths += %W(#{config.root}/lib)
     # config.autoload_paths += Dir["#{config.root}/lib/**/"]
@@ -47,5 +51,8 @@ module RubyGemsProject
     config.generators.system_tests = nil
 
     config.assets.initialize_on_precompile = false
+
+    config.logger = Logger.new(STDOUT) # rubocop:disable Style/GlobalStdStream
+    # config.logger = Log4r::Logger.new('Application Log')
   end
 end

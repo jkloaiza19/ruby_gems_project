@@ -1,10 +1,17 @@
+<nav class="mt-2" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to 'Courses', courses_path %></li>
+    <li class="breadcrumb-item"><%= link_to lesson.course.title, lesson.course %></li>
+    <li class="breadcrumb-item active" aria-current="page"><%= link_to lesson.title, lesson %></li>
+  </ol>
+</nav>
 <div id="<%= dom_id lesson %>" class="card mt-4">
   <div class="card-header">
     Lesson
   </div>
   <div class="card-body">
     <h5 class="card-title"><%= lesson.title %></h5>
-    <p class="card-text"> <%= lesson.course.title %></p>
+    <p class="card-text"> <%= lesson.content %></p>
   </div>
   <div class="card-footer">
     Course: <%= link_to lesson.course.title, lesson.course %>

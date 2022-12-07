@@ -38,3 +38,4 @@
 /config/credentials/production.key
 
 /.byebug_history
+/.idea/*
