@@ -93,17 +93,21 @@ Rails.application.configure do # rubocop:disable Metrics/BlockLength
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { host: 'jcprojectsonline.com', protocol: 'https' }
+  config.action_mailer.default_url_options = { host: 'ruby-gems-project.jcprojectsonline.com/', protocol: 'https' }
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
     port: '587',
-    authentication: :plain,
+    # authentication: :plain,
     address: Rails.application.credentials.dig(:smtp, :address),
     user_name: Rails.application.credentials.dig(:smtp, :user_name),
     password: Rails.application.credentials.dig(:smtp, :password),
+    domain: 'jcprojectsonline.com',
+    authentication: :login,
+    ssl: true,
+    tls: true,
     enable_starttls_auto: true
   }
 
