@@ -2,6 +2,11 @@
 
 require 'active_support/core_ext/integer/time'
 
+Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE)
+ActionMailer::Base.raise_delivery_errors = true
+ActionMailer::Base.perform_deliveries = true
+ActionMailer::Base.delivery_method = :smtp
+
 Rails.application.configure do # rubocop:disable Metrics/BlockLength
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -104,10 +109,10 @@ Rails.application.configure do # rubocop:disable Metrics/BlockLength
     address: Rails.application.credentials.dig(:smtp, :address),
     user_name: Rails.application.credentials.dig(:smtp, :user_name),
     password: Rails.application.credentials.dig(:smtp, :password),
-    domain: 'jcprojectsonline.com',
+    domain: Rails.application.credentials.dig(:smtp, :domain),
     # authentication: :login,
-    tls: true,
-    enable_starttls_auto: true
+    tls: true
+    # enable_starttls_auto: true
   }
 
   Rails.application.config.middleware.use ExceptionNotification::Rack,
