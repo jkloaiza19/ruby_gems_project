@@ -106,7 +106,6 @@ Rails.application.configure do # rubocop:disable Metrics/BlockLength
     password: Rails.application.credentials.dig(:smtp, :password),
     domain: 'jcprojectsonline.com',
     authentication: :login,
-    ssl: true,
     tls: true,
     enable_starttls_auto: true
   }
