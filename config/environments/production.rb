@@ -93,7 +93,7 @@ Rails.application.configure do # rubocop:disable Metrics/BlockLength
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { host: 'ruby-gems-project.herokuapp.com/', protocol: 'https' }
+  config.action_mailer.default_url_options = { host: 'jcprojectsonline.com', protocol: 'https' }
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
@@ -111,7 +111,7 @@ Rails.application.configure do # rubocop:disable Metrics/BlockLength
                                           email: {
                                             deliver_with: :deliver, # Rails >= 4.2.1 do not need this option since it defaults to :deliver_now
                                             email_prefix: '[PREFIX] ',
-                                            sender_address: %("Email error" <jkloaiza19+amazon@gmail.com>),
+                                            sender_address: %("Email error" <support@jcprojectsonline.com>),
                                             exception_recipients: %w[jkloaiza19+amazon@gmail.com]
                                           }
 

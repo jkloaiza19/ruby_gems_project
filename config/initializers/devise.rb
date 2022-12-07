@@ -309,5 +309,5 @@ Devise.setup do |config|
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
 
-  config.mailer_sender = 'jkloaiza19+amazon@gmail.com'
+  config.mailer_sender = 'support@jcprojectsonline.com'
 end
