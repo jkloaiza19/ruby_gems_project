@@ -112,8 +112,8 @@ Rails.application.configure do # rubocop:disable Metrics/BlockLength
     password: Rails.application.credentials.dig(:smtp, :password),
     domain: Rails.application.credentials.dig(:smtp, :domain),
     # authentication: :login,
-    tls: true
-    # enable_starttls_auto: true
+    tls: true,
+    enable_starttls_auto: true
   }
 
   Rails.application.config.middleware.use ExceptionNotification::Rack,
