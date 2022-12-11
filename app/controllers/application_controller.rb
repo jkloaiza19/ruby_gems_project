@@ -6,6 +6,8 @@
 class ApplicationController < ActionController::Base
   include PublicActivity::StoreController
   include Pundit::Authorization
+  include Pagy::Backend
+
   before_action :set_global_variables, if: :user_signed_in?
   after_action :update_user_online, if: :user_signed_in?
   helper_method :owner_or_admin?

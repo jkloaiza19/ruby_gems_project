@@ -96,3 +96,5 @@ gem "rolify"
 gem "pundit"
 
 gem 'tlsmail', '~> 0.0.1'
+
+gem 'pagy', '~> 5.10'

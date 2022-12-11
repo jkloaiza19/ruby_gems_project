@@ -144,6 +144,8 @@ GEM
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pagy (5.10.1)
+      activesupport
     pg (1.4.3)
     public_activity (2.0.2)
       actionpack (>= 5.0.0)
@@ -265,6 +267,7 @@ DEPENDENCIES
   jbuilder
   jsbundling-rails (~> 1.0)
   jwt
+  pagy (~> 5.10)
   pg (~> 1.1)
   public_activity
   puma (~> 5.0)

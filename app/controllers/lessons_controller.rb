@@ -11,15 +11,20 @@ class LessonsController < ApplicationController
   end
 
   # GET /lessons/1 or /lessons/1.json
-  def show; end
+  def show
+    authorize @lesson
+  end
 
   # GET /lessons/new
   def new
     @lesson = Lesson.new
+    @course = Course.friendly.find(params[:course_id])
   end
 
   # GET /lessons/1/edit
-  def edit; end
+  def edit
+    authorize @lesson
+  end
 
   # POST /lessons or /lessons.json
   def create
